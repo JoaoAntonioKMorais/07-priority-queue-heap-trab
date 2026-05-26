@@ -25,18 +25,17 @@ public class FilaComPrioridade<T> extends FilaEstatica<T> {
     }
 
     public void adicionaPosicao(int posicao, T elemento) {
-		if (posicao < 0 || posicao > tamanho) {
-			throw new IllegalArgumentException("Posição inválida");
-		}
+        if (posicao < 0 || posicao > tamanho) {
+            throw new IllegalArgumentException("Posição inválida");
+        }
 
-        // Mover todos os elementos
-		for (int i = tamanho - 1; i >= posicao; i--) {
-			elementos[i+1] = elementos[i];
-		}
+        for (int i = tamanho - 1; i >= posicao; i--) {
+            elementos[i+1] = elementos[i];
+        }
 
-		elementos[posicao] = elemento;
-		tamanho++;
-	}
+        elementos[posicao] = elemento;
+        tamanho++;
+    }
 
     @Override
     public String toString() {

@@ -20,7 +20,6 @@ public class FilaEstatica<T> {
         }
 
         elementos[fim] = valor;
-        // fim = (fim + 1) % capacidade();
 
         fim++;
         if (fim == capacidade()) {
@@ -30,7 +29,6 @@ public class FilaEstatica<T> {
         tamanho++;
     }
 
-    // Implementação com complexidade O(1)
     public T desenfileirar() {
         if (estaVazia()) {
             throw new RuntimeException("A fila está vazia");
@@ -48,20 +46,11 @@ public class FilaEstatica<T> {
         return elementoRemovido;
     }
 
-
-    /*
-      - Implementação com complexidade O(n) em vez de O(1)
-
-        Fila com 1 milhão de elementos e fizer 1 milhão de desenfileiramentos:
-         - Array circular: 1 milhão × O(1) = 1 milhão de operações
-         - Array com deslocamento: 1 milhão × O(n) = 1 trilhão de operações
-    */
     public T desenfileirarComDeslocamento() {
         if (estaVazia()) throw new IllegalStateException("Fila vazia");
 
-        T valorRemovido = (T) elementos[0]; // remove sempre do início
+        T valorRemovido = (T) elementos[0];
 
-        // Desloca todos os elementos uma posição para a esquerda
         for (int i = 0; i < tamanho - 1; i++) {
             elementos[i] = elementos[i + 1];
         }
